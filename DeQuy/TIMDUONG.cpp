@@ -3,21 +3,26 @@
 #include <map>
 using namespace std;
 
-int soLanDiChuyen(vector<vector<int>> soCanh, map<int, int>& ghiNho, int curX, int target) {
+int soLanDiChuyen(vector<vector<int>> soCanh, map<int, int>& ghiNho, int curX, int target, int boDem) {
     if (curX == target)
     {
-        return 1;
+        return boDem;
     }
     int shortest = 0;
     for (size_t i = 0; i < soCanh[curX].size(); i++)
     {
-        int phanHoi = soLanDiChuyen(soCanh, ghiNho, soCanh[curX][i], target);
-        if (shortest == 0 || phanHoi < shortest)
+        int phanHoi = soLanDiChuyen(soCanh, ghiNho, soCanh[curX][i], target, boDem+1);
+        if (phanHoi != 0)
         {
-            shortest += phanHoi;
+            if (shortest == 0 || phanHoi < shortest)
+            {
+                shortest = phanHoi;
+                ghiNho[curX] = shortest;
+            }
         }
     }
-    return shortest;
+    ghiNho[curX] = shortest;
+    return shortest; 
 }
 
 int main() {
@@ -30,5 +35,5 @@ int main() {
         int x, y; cin >> x >> y;
         soCanh[x].push_back(y);
     }
-    cout << soLanDiChuyen(soCanh, ghiNho, S, T);
+    cout << soLanDiChuyen(soCanh, ghiNho, S, T, 0);
 }
