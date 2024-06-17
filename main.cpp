@@ -107,58 +107,58 @@ int main() {
         cout << "Khong the";
     }
 }*/
-#include <iostream>
-#include <cstring>
-#include <vector>
-#include <map>
-using namespace std;
+// #include <iostream>
+// #include <cstring>
+// #include <vector>
+// #include <map>
+// using namespace std;
 
-string howConstruct(string input, vector<string>&wordBank, map<string, string>&ghiNho) {
-    if (ghiNho.count(input) != 0)
-    {
-        return ghiNho[input];
-    }
+// string howConstruct(string input, vector<string>&wordBank, map<string, string>&ghiNho) {
+//     if (ghiNho.count(input) != 0)
+//     {
+//         return ghiNho[input];
+//     }
     
-    if (input == "")
-    {
-        return "";
-    }
+//     if (input == "")
+//     {
+//         return "";
+//     }
 
-    string ketHop = "null";
+//     string ketHop = "null";
     
-    for (size_t i = 0; i < wordBank.size(); i++)
-    {
-        if (input.find(wordBank[i]) != string::npos && input.find(wordBank[i]) == 0)
-        {
-            string tmp = input.substr(wordBank[i].length());
-            string phanHoi = howConstruct(tmp, wordBank, ghiNho);
-            if (phanHoi != "null")
-            {
-                ketHop = wordBank[i] + " " + phanHoi;
-                ghiNho[input] = ketHop;
-                return ketHop;
-            }
-        }
-    }
-    ghiNho[input] = ketHop;
-    return ketHop;
-}
+//     for (size_t i = 0; i < wordBank.size(); i++)
+//     {
+//         if (input.find(wordBank[i]) != string::npos && input.find(wordBank[i]) == 0)
+//         {
+//             string tmp = input.substr(wordBank[i].length());
+//             string phanHoi = howConstruct(tmp, wordBank, ghiNho);
+//             if (phanHoi != "null")
+//             {
+//                 ketHop = wordBank[i] + " " + phanHoi;
+//                 ghiNho[input] = ketHop;
+//                 return ketHop;
+//             }
+//         }
+//     }
+//     ghiNho[input] = ketHop;
+//     return ketHop;
+// }
 
-int main() {
-    string input; cin >> input;
-    string x;
-    vector<string>wordBank;
-    int n; cin >> n;
-    for (size_t i = 0; i < n; i++)
-    {
-        cin >> x;
-        wordBank.push_back(x);
-    }
+// int main() {
+//     string input; cin >> input;
+//     string x;
+//     vector<string>wordBank;
+//     int n; cin >> n;
+//     for (size_t i = 0; i < n; i++)
+//     {
+//         cin >> x;
+//         wordBank.push_back(x);
+//     }
     
-    map<string, string> ghiNho;
-    cout << howConstruct(input, wordBank, ghiNho);
+//     map<string, string> ghiNho;
+//     cout << howConstruct(input, wordBank, ghiNho);
     
-}
+// }
 
 // #include <iostream>
 // #include <map>
@@ -170,3 +170,23 @@ int main() {
 //     cout << mp.count("quachuoi");
 //     cout << mp.count("1");
 // }
+
+
+#include <iostream>
+using namespace std;
+
+
+float an(int n) {
+    float s=1; float t = 1;
+    for (int i = 0; i <= n; i++) {
+        float a = 1;
+        a = a * 2*(i+1)/(2*i+3) * t;
+        t = a;
+        s += a;
+    }
+    return s;
+}
+
+int main() {
+    cout << an(5);
+}
