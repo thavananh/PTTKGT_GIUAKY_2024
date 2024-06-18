@@ -3,12 +3,10 @@
 	"tasks": [
 		{
 			"type": "cppbuild",
-			"label": "C/C++: g++-12 build active file",
-			"command": "/usr/bin/g++-12",
+			"label": "C/C++: g++-11 build active file",
+			"command": "/usr/bin/g++-11",
 			"args": [
 				"-fdiagnostics-color=always",
-				"--std",
-                "c++14",
 				"-g",
 				"${file}",
 				"-o",
@@ -24,7 +22,7 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"detail": "compiler: /usr/bin/g++-12"
+			"detail": "compiler: /usr/bin/g++-11"
 		}
 	]
 }
